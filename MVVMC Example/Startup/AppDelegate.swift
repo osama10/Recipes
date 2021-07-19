@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  MVVMC Example
+//  Task2
 //
-//  Created by Osama Bashir on 19.07.21.
+//  Created by Osama Bashir on 10/25/20.
 //
 
 import UIKit
