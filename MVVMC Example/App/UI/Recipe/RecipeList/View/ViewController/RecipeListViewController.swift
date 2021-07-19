@@ -11,14 +11,10 @@ import Combine
 class RecipeListViewController: UIViewController, AlertsPresentable {
     
     @IBOutlet private weak var tableView: UITableView!
-    var viewModel: RecipeListViewModelProtocol!
-    private var subscriptionsStore = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        bindViewModel()
-        viewModel.viewDidLoadTrigger.send()
     }
     
     /// setup table view
@@ -30,33 +26,12 @@ class RecipeListViewController: UIViewController, AlertsPresentable {
         tableView.rowHeight = UITableView.automaticDimension
     }
     
-    /// binds view model to View
-    private func bindViewModel() {
-        /// show error
-        viewModel
-            .error
-            .sink { [weak self] in self?.showAlert(with: "Error", and: $0) }
-            .store(in: &subscriptionsStore)
-        /// show and hide loader
-        viewModel
-            .loader
-            .sink { ($0) ? LoadingView.show() : LoadingView.hide() }
-            .store(in: &subscriptionsStore)
-        /// reloads table view
-        viewModel
-            .reload
-            .sink { [weak self] in self?.tableView.reloadData() }
-            .store(in: &subscriptionsStore)
-        /// title of the View
-        title = viewModel.title
-    }
-    
-}
+ }
 
 extension RecipeListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.totalRows
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,8 +44,8 @@ extension RecipeListViewController: UITableViewDelegate, UITableViewDataSource {
     /// - Returns UITableViewCell
     private func tableViewCell(indexPath: IndexPath) -> UITableViewCell {
         (indexPath.row == 0)
-            ? dateCell(viewModel: viewModel.dateCellViewModel, indexPath: indexPath)
-            : recipeCell(viewModel: viewModel.recipeViewModel(atIndex: indexPath.row), indexPath: indexPath)
+            ? dateCell(viewModel: DateCellViewModel(), indexPath: indexPath)
+            : recipeCell(viewModel: RecipeCellViewModel(recipe: Recipe(title: "", image: "", headline: "")), indexPath: indexPath)
     }
     
     /// return  RecipeTableViewCell

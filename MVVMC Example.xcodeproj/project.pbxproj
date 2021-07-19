@@ -31,7 +31,7 @@
 		9AAE220F26A5D18F000483E2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE220626A5D18F000483E2 /* Coordinator.swift */; };
 		9AAE222426A5D350000483E2 /* RecipeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE221326A5D350000483E2 /* RecipeListViewModel.swift */; };
 		9AAE222526A5D350000483E2 /* RecipeListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE221526A5D350000483E2 /* RecipeListCoordinator.swift */; };
-		9AAE222626A5D350000483E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE221626A5D350000483E2 /* Main.storyboard */; };
+		9AAE222626A5D350000483E2 /* Recipe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE221626A5D350000483E2 /* Recipe.storyboard */; };
 		9AAE222726A5D350000483E2 /* RecipeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE221A26A5D350000483E2 /* RecipeListViewController.swift */; };
 		9AAE222826A5D350000483E2 /* RecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE221D26A5D350000483E2 /* RecipeTableViewCell.xib */; };
 		9AAE222926A5D350000483E2 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE221E26A5D350000483E2 /* RecipeTableViewCell.swift */; };
@@ -99,7 +99,7 @@
 		9AAE220626A5D18F000483E2 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		9AAE221326A5D350000483E2 /* RecipeListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeListViewModel.swift; sourceTree = "<group>"; };
 		9AAE221526A5D350000483E2 /* RecipeListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeListCoordinator.swift; sourceTree = "<group>"; };
-		9AAE221726A5D350000483E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9AAE221726A5D350000483E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Recipe.storyboard; sourceTree = "<group>"; };
 		9AAE221A26A5D350000483E2 /* RecipeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeListViewController.swift; sourceTree = "<group>"; };
 		9AAE221D26A5D350000483E2 /* RecipeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeTableViewCell.xib; sourceTree = "<group>"; };
 		9AAE221E26A5D350000483E2 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
@@ -327,6 +327,9 @@
 		9AAE221026A5D350000483E2 /* Recipe */ = {
 			isa = PBXGroup;
 			children = (
+				9AAE221626A5D350000483E2 /* Recipe.storyboard */,
+				9AAE221426A5D350000483E2 /* Coordinator */,
+				9AAE224A26A63EF5000483E2 /* RecipeDetails */,
 				9AAE221126A5D350000483E2 /* RecipeList */,
 			);
 			path = Recipe;
@@ -335,9 +338,8 @@
 		9AAE221126A5D350000483E2 /* RecipeList */ = {
 			isa = PBXGroup;
 			children = (
+				9AAE224F26A63F3C000483E2 /* Coordinator */,
 				9AAE221226A5D350000483E2 /* ViewModel */,
-				9AAE221426A5D350000483E2 /* Coordinator */,
-				9AAE221626A5D350000483E2 /* Main.storyboard */,
 				9AAE221826A5D350000483E2 /* View */,
 			);
 			path = RecipeList;
@@ -442,6 +444,44 @@
 				9AAE223926A5D3EE000483E2 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		9AAE224A26A63EF5000483E2 /* RecipeDetails */ = {
+			isa = PBXGroup;
+			children = (
+				9AAE224E26A63F32000483E2 /* Coordinator */,
+				9AAE224C26A63F0B000483E2 /* ViewModel */,
+				9AAE224B26A63EFD000483E2 /* View */,
+			);
+			path = RecipeDetails;
+			sourceTree = "<group>";
+		};
+		9AAE224B26A63EFD000483E2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9AAE224C26A63F0B000483E2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9AAE224E26A63F32000483E2 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		9AAE224F26A63F3C000483E2 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -556,7 +596,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AAE222D26A5D350000483E2 /* DateTableViewCell.xib in Resources */,
-				9AAE222626A5D350000483E2 /* Main.storyboard in Resources */,
+				9AAE222626A5D350000483E2 /* Recipe.storyboard in Resources */,
 				9AAE21B226A5CCAB000483E2 /* LaunchScreen.storyboard in Resources */,
 				9AAE224226A5D3EE000483E2 /* Assets.xcassets in Resources */,
 				9AAE222826A5D350000483E2 /* RecipeTableViewCell.xib in Resources */,
@@ -660,12 +700,12 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		9AAE221626A5D350000483E2 /* Main.storyboard */ = {
+		9AAE221626A5D350000483E2 /* Recipe.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9AAE221726A5D350000483E2 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Recipe.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -801,7 +841,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.osama.MVVMC-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -819,7 +859,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.osama.MVVMC-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

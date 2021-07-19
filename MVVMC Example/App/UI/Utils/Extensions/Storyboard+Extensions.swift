@@ -10,6 +10,7 @@ import UIKit
 extension UIStoryboard {
     enum Storyboard: String {
         case main = "Main"
+        case recipe = "Recipe"
     }
 
     // MARK: - Convenience Initializers
