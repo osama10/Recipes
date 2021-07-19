@@ -49,6 +49,7 @@
 		9AAE224226A5D3EE000483E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE223926A5D3EE000483E2 /* Assets.xcassets */; };
 		9AAE224626A5D52F000483E2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9AAE224526A5D52F000483E2 /* Alamofire */; };
 		9AAE224926A5D562000483E2 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9AAE224826A5D562000483E2 /* SDWebImage */; };
+		9AAE225126A642F7000483E2 /* RecipeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE225026A642F7000483E2 /* RecipeDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 		9AAE223526A5D3EE000483E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9AAE223726A5D3EE000483E2 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9AAE223926A5D3EE000483E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9AAE225026A642F7000483E2 /* RecipeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -459,6 +461,7 @@
 		9AAE224B26A63EFD000483E2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9AAE225026A642F7000483E2 /* RecipeDetailsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				9AAE222A26A5D350000483E2 /* RecipeCellViewModel.swift in Sources */,
 				9AAE220926A5D18F000483E2 /* UIFont+Extensions.swift in Sources */,
 				9AAE223F26A5D3EE000483E2 /* AppDelegate.swift in Sources */,
+				9AAE225126A642F7000483E2 /* RecipeDetailsViewController.swift in Sources */,
 				9AAE223E26A5D3EE000483E2 /* RecipeDIContainer.swift in Sources */,
 				9AAE224126A5D3EE000483E2 /* Constants.swift in Sources */,
 			);
