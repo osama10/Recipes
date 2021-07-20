@@ -9,9 +9,8 @@ import Foundation
 import UIKit
 
 class BaseCoordinator: Coordinator {
-    
     weak var parentCoordinator: Coordinator?
-   
+
     var childCoordinator: Coordinator? {
         didSet {
             childCoordinator?.parentCoordinator = self
@@ -25,6 +24,5 @@ class BaseCoordinator: Coordinator {
     func didFinishChild() {
         childCoordinator = nil
     }
-    
     
 }
