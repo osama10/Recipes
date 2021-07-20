@@ -26,8 +26,7 @@ protocol RecipeListViewModelOutput {
     var numberOfRows: Int { get }
     var viewStateUpdated: ((ViewState) -> Void)? { get set }
 
-    func dateCellViewModel() -> DateCellViewModel
-    func recipeCellViewModel(at indexPath: IndexPath) -> RecipeCellViewModel
+    func cellType(at indexPath: IndexPath) -> RecipeListViewModel.CellType
 }
 
 protocol RecipeListViewModelProtocol: RecipeListViewModelInput, RecipeListViewModelOutput {
@@ -35,6 +34,12 @@ protocol RecipeListViewModelProtocol: RecipeListViewModelInput, RecipeListViewMo
 }
 
 final class RecipeListViewModel: RecipeListViewModelProtocol {
+
+    enum CellType {
+        case date(DateCellViewModel)
+        case recipe(RecipeCellViewModel)
+    }
+
     private let recipeUseCase: RecipeUseCaseProtocol
     private var recipes = [Recipe]()
     private var cancelSubscription = Set<AnyCancellable>()
@@ -75,12 +80,10 @@ extension RecipeListViewModel {
         recipes.count + 1
     }
 
-    func dateCellViewModel() -> DateCellViewModel {
-        DateCellViewModel()
-    }
-
-    func recipeCellViewModel(at indexPath: IndexPath) -> RecipeCellViewModel {
-        RecipeCellViewModel(recipe: recipes[indexPath.row - 1])
+    func cellType(at indexPath: IndexPath) -> CellType {
+        indexPath.row == 0
+            ? .date(DateCellViewModel())
+            : .recipe(RecipeCellViewModel(recipe: recipes[indexPath.row - 1]))
     }
 }
 

@@ -11,10 +11,16 @@ import Combine
 class RecipeListViewController: UIViewController, AlertsPresentable {
     
     @IBOutlet private weak var tableView: UITableView!
+
+    var viewModel: RecipeListViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+
+        setup()
+        bindViewModel()
+        viewModel.viewDidLoad()
     }
     
     /// setup table view
@@ -25,13 +31,37 @@ class RecipeListViewController: UIViewController, AlertsPresentable {
         tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableView.automaticDimension
     }
+
+    private func setup() {
+        let dataStore = RecipeDataStore(networkManager: NetworkManager())
+        let repository = RecipeRepository(dataStore: dataStore)
+        let useCase = RecipeUseCase(recipeRepository: repository)
+        viewModel = RecipeListViewModel(recipeUseCase: useCase)
+    }
+
+    private func bindViewModel() {
+        viewModel.viewStateUpdated = { [weak self] state in
+            guard let self = self else { return }
+            switch state {
+            case .initial:
+                break
+            case .loading:
+                //show loading
+                break
+            case .loaded:
+                self.tableView.reloadData()
+            case .failed(let message):
+                self.showAlert(with: "Error", and: message)
+            }
+        }
+    }
     
  }
 
 extension RecipeListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        viewModel.numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,9 +73,12 @@ extension RecipeListViewController: UITableViewDelegate, UITableViewDataSource {
     /// - Parameter indexPath: for checking the row
     /// - Returns UITableViewCell
     private func tableViewCell(indexPath: IndexPath) -> UITableViewCell {
-        (indexPath.row == 0)
-            ? dateCell(viewModel: DateCellViewModel(), indexPath: indexPath)
-            : recipeCell(viewModel: RecipeCellViewModel(recipe: Recipe(title: "", image: "", headline: "")), indexPath: indexPath)
+        let cellType = viewModel.cellType(at: indexPath)
+
+        switch cellType {
+        case .date(let dateViewModel): return dateCell(viewModel: dateViewModel, indexPath: indexPath)
+        case .recipe(let recipeViewModel): return recipeCell(viewModel: recipeViewModel, indexPath: indexPath)
+        }
     }
     
     /// return  RecipeTableViewCell
