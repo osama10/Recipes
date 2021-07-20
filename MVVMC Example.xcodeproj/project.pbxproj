@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A68FD6D26A70D7A002F131D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A68FD6C26A70D7A002F131D /* Coordinator.swift */; };
+		9A68FD6F26A70E52002F131D /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A68FD6E26A70E52002F131D /* BaseCoordinator.swift */; };
 		9AAE21B226A5CCAB000483E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE21B026A5CCAB000483E2 /* LaunchScreen.storyboard */; };
 		9AAE21BD26A5CCAC000483E2 /* MVVMC_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE21BC26A5CCAC000483E2 /* MVVMC_ExampleTests.swift */; };
 		9AAE21C826A5CCAC000483E2 /* MVVMC_ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE21C726A5CCAC000483E2 /* MVVMC_ExampleUITests.swift */; };
@@ -28,7 +30,6 @@
 		9AAE220C26A5D18F000483E2 /* Storyboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE220326A5D18F000483E2 /* Storyboard+Extensions.swift */; };
 		9AAE220D26A5D18F000483E2 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE220426A5D18F000483E2 /* Observable.swift */; };
 		9AAE220E26A5D18F000483E2 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE220526A5D18F000483E2 /* LoadingView.swift */; };
-		9AAE220F26A5D18F000483E2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE220626A5D18F000483E2 /* Coordinator.swift */; };
 		9AAE222426A5D350000483E2 /* RecipeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE221326A5D350000483E2 /* RecipeListViewModel.swift */; };
 		9AAE222526A5D350000483E2 /* RecipeListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE221526A5D350000483E2 /* RecipeListCoordinator.swift */; };
 		9AAE222626A5D350000483E2 /* Recipe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE221626A5D350000483E2 /* Recipe.storyboard */; };
@@ -70,6 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A68FD6C26A70D7A002F131D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		9A68FD6E26A70E52002F131D /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		9AAE21A226A5CCAB000483E2 /* MVVMC Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVVMC Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AAE21B126A5CCAB000483E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9AAE21B326A5CCAB000483E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,7 +100,6 @@
 		9AAE220326A5D18F000483E2 /* Storyboard+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard+Extensions.swift"; sourceTree = "<group>"; };
 		9AAE220426A5D18F000483E2 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		9AAE220526A5D18F000483E2 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		9AAE220626A5D18F000483E2 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		9AAE221326A5D350000483E2 /* RecipeListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeListViewModel.swift; sourceTree = "<group>"; };
 		9AAE221526A5D350000483E2 /* RecipeListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeListCoordinator.swift; sourceTree = "<group>"; };
 		9AAE221726A5D350000483E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Recipe.storyboard; sourceTree = "<group>"; };
@@ -146,6 +148,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A68FD6B26A70D6B002F131D /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				9A68FD6C26A70D7A002F131D /* Coordinator.swift */,
+				9A68FD6E26A70E52002F131D /* BaseCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		9AAE219926A5CCAA000483E2 = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +230,7 @@
 		9AAE21DA26A5CD01000483E2 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9A68FD6B26A70D6B002F131D /* Coordinator */,
 				9AAE221026A5D350000483E2 /* Recipe */,
 				9AAE21FC26A5D18F000483E2 /* Utils */,
 			);
@@ -308,7 +320,6 @@
 				9AAE21FD26A5D18F000483E2 /* Extensions */,
 				9AAE220426A5D18F000483E2 /* Observable.swift */,
 				9AAE220526A5D18F000483E2 /* LoadingView.swift */,
-				9AAE220626A5D18F000483E2 /* Coordinator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -646,17 +657,18 @@
 				9AAE222926A5D350000483E2 /* RecipeTableViewCell.swift in Sources */,
 				9AAE220D26A5D18F000483E2 /* Observable.swift in Sources */,
 				9AAE220C26A5D18F000483E2 /* Storyboard+Extensions.swift in Sources */,
+				9A68FD6F26A70E52002F131D /* BaseCoordinator.swift in Sources */,
 				9AAE223C26A5D3EE000483E2 /* AppNavigation.swift in Sources */,
 				9AAE21ED26A5CEA1000483E2 /* RecipeDataStore.swift in Sources */,
 				9AAE222526A5D350000483E2 /* RecipeListCoordinator.swift in Sources */,
 				9AAE21EA26A5CE8B000483E2 /* RecipeDataModel.swift in Sources */,
 				9AAE21E726A5CE77000483E2 /* RecipeRepository.swift in Sources */,
-				9AAE220F26A5D18F000483E2 /* Coordinator.swift in Sources */,
 				9AAE222C26A5D350000483E2 /* DateCellViewModel.swift in Sources */,
 				9AAE220B26A5D18F000483E2 /* UITableView+Extensions.swift in Sources */,
 				9AAE222426A5D350000483E2 /* RecipeListViewModel.swift in Sources */,
 				9AAE222A26A5D350000483E2 /* RecipeCellViewModel.swift in Sources */,
 				9AAE220926A5D18F000483E2 /* UIFont+Extensions.swift in Sources */,
+				9A68FD6D26A70D7A002F131D /* Coordinator.swift in Sources */,
 				9AAE223F26A5D3EE000483E2 /* AppDelegate.swift in Sources */,
 				9AAE225126A642F7000483E2 /* RecipeDetailsViewController.swift in Sources */,
 				9AAE223E26A5D3EE000483E2 /* RecipeDIContainer.swift in Sources */,
