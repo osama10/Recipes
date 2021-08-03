@@ -13,5 +13,4 @@ protocol Coordinator: AnyObject {
     
     func start()
     func didFinishChild()
-    
 }
