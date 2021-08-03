@@ -54,6 +54,7 @@
 		9ACBC10726B9797800B5B0D2 /* RecipeDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACBC10626B9797800B5B0D2 /* RecipeDetailsCoordinator.swift */; };
 		9ACBC10926B97AE800B5B0D2 /* RecipeDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACBC10826B97AE800B5B0D2 /* RecipeDetailsViewModel.swift */; };
 		C38C658226B96976008A3975 /* RecipeListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C658126B96976008A3975 /* RecipeListCoordinator.swift */; };
+		F97BF54826B98A730018F58F /* RecipeDetailsViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97BF54726B98A730018F58F /* RecipeDetailsViewBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		9ACBC10626B9797800B5B0D2 /* RecipeDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsCoordinator.swift; sourceTree = "<group>"; };
 		9ACBC10826B97AE800B5B0D2 /* RecipeDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsViewModel.swift; sourceTree = "<group>"; };
 		C38C658126B96976008A3975 /* RecipeListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListCoordinator.swift; sourceTree = "<group>"; };
+		F97BF54726B98A730018F58F /* RecipeDetailsViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsViewBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -486,6 +488,7 @@
 			isa = PBXGroup;
 			children = (
 				9ACBC10626B9797800B5B0D2 /* RecipeDetailsCoordinator.swift */,
+				F97BF54726B98A730018F58F /* RecipeDetailsViewBuilder.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F97BF54826B98A730018F58F /* RecipeDetailsViewBuilder.swift in Sources */,
 				9AAE223D26A5D3EE000483E2 /* AppDIContainer.swift in Sources */,
 				9ACBC10926B97AE800B5B0D2 /* RecipeDetailsViewModel.swift in Sources */,
 				9AAE21FA26A5CF8F000483E2 /* DataFetchingError.swift in Sources */,

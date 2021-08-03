@@ -17,6 +17,7 @@ final class RecipeDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
+        setActions()
     }
     
     private func bindViewModel() {
@@ -24,5 +25,12 @@ final class RecipeDetailsViewController: UIViewController {
         recipeHeadline.text = viewModel.headline
         recipeImage.sd_setImage(with: viewModel.image, completed: nil)
     }
-    
+
+    private func setActions() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(didTapBackButton))
+    }
+
+    @objc func didTapBackButton() {
+        viewModel.didTapBackButton()
+    }
 }

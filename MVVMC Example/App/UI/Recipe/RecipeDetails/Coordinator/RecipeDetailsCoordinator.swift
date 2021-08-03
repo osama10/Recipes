@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol RecipeDetailsViewActions: AnyObject {
+    func didTapBackButton()
+}
+
 final class RecipeDetailsCoordinator: BaseCoordinator<UINavigationController> {
     struct Dependency {
         private let builder: RecipeDetailsViewBuilder
@@ -17,8 +21,8 @@ final class RecipeDetailsCoordinator: BaseCoordinator<UINavigationController> {
             self.rootViewController = rootViewController
         }
         
-        func buildViewController() -> RecipeDetailsViewController {
-            builder.build()
+        func buildViewController(actions: RecipeDetailsViewActions) -> RecipeDetailsViewController {
+            builder.build(actions: actions)
         }
     }
     
@@ -30,23 +34,13 @@ final class RecipeDetailsCoordinator: BaseCoordinator<UINavigationController> {
     }
     
     override func start() {
-        let viewController = dependency.buildViewController()
+        let viewController = dependency.buildViewController(actions: self)
         rootViewController.pushViewController(viewController, animated: true)
     }
 }
 
-final class RecipeDetailsViewBuilder {
-    private let recipe: Recipe
-    
-    init(recipe: Recipe) {
-        self.recipe = recipe
-    }
-    
-    func build() -> RecipeDetailsViewController {
-        let storyboard = UIStoryboard(storyboard: .recipe)
-        let viewController: RecipeDetailsViewController = storyboard.instantiateViewController()
-        let viewModel = RecipeDetailsViewModel(recipe: recipe)
-        viewController.viewModel = viewModel
-        return viewController
+extension RecipeDetailsCoordinator: RecipeDetailsViewActions {
+    func didTapBackButton() {
+        rootViewController.popViewController(animated: true)
     }
 }

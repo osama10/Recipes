@@ -27,13 +27,14 @@ final class RecipeDetailsViewModel: RecipeDetailsViewModelProtocol {
     var headline: String { recipe.headline }
     
     private let recipe: Recipe
+    private weak var actions: RecipeDetailsViewActions?
     
-    init(recipe: Recipe) {
+    init(recipe: Recipe, actions: RecipeDetailsViewActions) {
         self.recipe = recipe
+        self.actions = actions
     }
     
     func didTapBackButton() {
-        
+        actions?.didTapBackButton()
     }
-    
 }
