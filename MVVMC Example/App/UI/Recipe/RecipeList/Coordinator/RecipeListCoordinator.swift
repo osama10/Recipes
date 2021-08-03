@@ -11,10 +11,10 @@ import UIKit
 final class RecipeListCoordinator: BaseCoordinator<UINavigationController> {
 
     struct Dependency {
-        private let builder: RecipeListBuilder
+        private let builder: RecipeListViewBuilder
         let rootViewController: UINavigationController
 
-        init(builder: RecipeListBuilder, rootViewController: UINavigationController) {
+        init(builder: RecipeListViewBuilder, rootViewController: UINavigationController) {
             self.builder = builder
             self.rootViewController = rootViewController
         }
@@ -39,19 +39,3 @@ final class RecipeListCoordinator: BaseCoordinator<UINavigationController> {
     }
 }
 
-final class RecipeListBuilder {
-    let recipeUseCase: RecipeUseCaseProtocol
-
-    init(recipeUseCase: RecipeUseCaseProtocol) {
-        self.recipeUseCase = recipeUseCase
-    }
-
-    func buildViewController() -> RecipeListViewController {
-        let storyboard = UIStoryboard(storyboard: .recipe)
-        let recipeViewController: RecipeListViewController = storyboard.initialViewController()
-        let viewModel = RecipeListViewModel(recipeUseCase: recipeUseCase)
-        recipeViewController.viewModel = viewModel
-
-        return recipeViewController
-    }
-}

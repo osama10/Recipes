@@ -23,7 +23,7 @@ final class AppCoordinator: BaseCoordinator<UINavigationController> {
     
     private func prepareForLaunch() {
         let useCase = RecipeUseCase(recipeRepository: RecipeRepository(dataStore: RecipeDataStore(networkManager: NetworkManager())))
-        let dependancy = RecipeListCoordinator.Dependency(builder: RecipeListBuilder(recipeUseCase: useCase), rootViewController: rootViewController)
+        let dependancy = RecipeListCoordinator.Dependency(builder: RecipeListViewBuilder(recipeUseCase: useCase), rootViewController: rootViewController)
         let coordinator = RecipeListCoordinator(dependency: dependancy)
         childCoordinator = coordinator
         childCoordinator?.start()
