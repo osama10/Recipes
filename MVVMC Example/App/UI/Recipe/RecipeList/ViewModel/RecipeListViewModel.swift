@@ -29,7 +29,7 @@ protocol RecipeListViewModelOutput {
     func cellType(at indexPath: IndexPath) -> RecipeListViewModel.CellType
 }
 
-protocol RecipeListViewModelProtocol: RecipeListViewModelInput, RecipeListViewModelOutput {
+protocol RecipeListViewModelProtocol:  RecipeListViewModelInput, RecipeListViewModelOutput {
 
 }
 
@@ -43,11 +43,13 @@ final class RecipeListViewModel: RecipeListViewModelProtocol {
     private let recipeUseCase: RecipeUseCaseProtocol
     private var recipes = [Recipe]()
     private var cancelSubscription = Set<AnyCancellable>()
+    private weak var actions: RecipeListActions?
 
     var viewStateUpdated: ((ViewState) -> Void)?
 
-    init(recipeUseCase: RecipeUseCaseProtocol) {
+    init(recipeUseCase: RecipeUseCaseProtocol, actions: RecipeListActions) {
         self.recipeUseCase = recipeUseCase
+        self.actions = actions
     }
 }
 
@@ -70,7 +72,8 @@ extension RecipeListViewModel {
     }
     
     func didTapRow(at indexPath: IndexPath) {
-
+        guard case .recipe = cellType(at: indexPath) else { return }
+        actions?.didTapRecipe(recipe: recipes[indexPath.row - 1])
     }
 }
 

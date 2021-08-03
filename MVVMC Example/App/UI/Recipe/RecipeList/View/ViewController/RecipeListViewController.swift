@@ -17,26 +17,18 @@ class RecipeListViewController: UIViewController, AlertsPresentable {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-
-        setup()
         bindViewModel()
         viewModel.viewDidLoad()
     }
     
     /// setup table view
     private func setupTableView() {
-        tableView.setdelegateAndDatasource(for: self)
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.register(RecipeTableViewCell.self)
         tableView.register(DateTableViewCell.self)
         tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableView.automaticDimension
-    }
-
-    private func setup() {
-        let dataStore = RecipeDataStore(networkManager: NetworkManager())
-        let repository = RecipeRepository(dataStore: dataStore)
-        let useCase = RecipeUseCase(recipeRepository: repository)
-        viewModel = RecipeListViewModel(recipeUseCase: useCase)
     }
 
     private func bindViewModel() {
@@ -65,7 +57,12 @@ extension RecipeListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableViewCell(indexPath: indexPath)
+         tableViewCell(indexPath: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didTapRow(at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     /// return appropriate UITableViewCelll based on indexPath

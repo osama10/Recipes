@@ -8,8 +8,11 @@
 import Foundation
 import UIKit
 
-final class RecipeListCoordinator: BaseCoordinator<UINavigationController> {
+protocol RecipeListActions: AnyObject {
+    func didTapRecipe(recipe: Recipe)
+}
 
+final class RecipeListCoordinator: BaseCoordinator<UINavigationController> {
     struct Dependency {
         private let builder: RecipeListViewBuilder
         let rootViewController: UINavigationController
@@ -19,23 +22,30 @@ final class RecipeListCoordinator: BaseCoordinator<UINavigationController> {
             self.rootViewController = rootViewController
         }
 
-        func buildViewController() -> RecipeListViewController {
-            builder.buildViewController()
+        func buildViewController(actions: RecipeListActions) -> RecipeListViewController {
+            builder.buildViewController(actions: actions)
         }
     }
 
     private let dependency: Dependency
 
     override func start() {
-        let controller = dependency.buildViewController()
-
+        let controller = dependency.buildViewController(actions: self)
         rootViewController.pushViewController(controller, animated: true)
     }
 
     init(dependency: Dependency) {
         self.dependency = dependency
-
         super.init(rootViewController: dependency.rootViewController)
     }
 }
 
+extension RecipeListCoordinator: RecipeListActions {
+    func didTapRecipe(recipe: Recipe) {
+        let builder = RecipeDetailsViewBuilder(recipe: recipe)
+        let dependency = RecipeDetailsCoordinator.Dependency(builder: builder, rootViewController: rootViewController)
+        let coordinator = RecipeDetailsCoordinator(dependency: dependency)
+        childCoordinator = coordinator
+        coordinator.start()
+    }
+}

@@ -18,6 +18,7 @@ class RecipeTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
+        isUserInteractionEnabled = true
     }
 
     /// setup cell's view

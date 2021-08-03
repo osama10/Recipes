@@ -12,11 +12,17 @@ final class RecipeDetailsViewController: UIViewController {
     @IBOutlet weak var recipeTitle: UILabel!
     @IBOutlet weak var recipeHeadline: UILabel!
     
+    var viewModel: RecipeDetailsViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        bindViewModel()
     }
     
-
+    private func bindViewModel() {
+        recipeTitle.text = viewModel.title
+        recipeHeadline.text = viewModel.headline
+        recipeImage.sd_setImage(with: viewModel.image, completed: nil)
+    }
+    
 }
