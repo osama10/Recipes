@@ -8,12 +8,20 @@
 import UIKit
 import Combine
 
-class RecipeListViewController: UIViewController, AlertsPresentable {
-    
-    @IBOutlet private weak var tableView: UITableView!
+class RecipeListViewController: UITableViewController, AlertsPresentable {
 
-    var viewModel: RecipeListViewModel!
-    
+    private let viewModel: RecipeListViewModel
+
+    init(viewModel: RecipeListViewModel) {
+        self.viewModel = viewModel
+
+        super.init(style: .plain)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -23,8 +31,6 @@ class RecipeListViewController: UIViewController, AlertsPresentable {
     
     /// setup table view
     private func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
         tableView.register(RecipeTableViewCell.self)
         tableView.register(DateTableViewCell.self)
         tableView.estimatedRowHeight = 200
@@ -47,20 +53,19 @@ class RecipeListViewController: UIViewController, AlertsPresentable {
             }
         }
     }
-    
  }
 
-extension RecipeListViewController: UITableViewDelegate, UITableViewDataSource {
+extension RecipeListViewController {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.numberOfRows
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          tableViewCell(indexPath: indexPath)
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.didTapRow(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
     }

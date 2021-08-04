@@ -15,10 +15,8 @@ final class RecipeListViewBuilder {
     }
 
     func buildViewController(actions: RecipeListActions) -> RecipeListViewController {
-        let storyboard = UIStoryboard(storyboard: .recipe)
-        let recipeViewController: RecipeListViewController = storyboard.initialViewController()
         let viewModel = RecipeListViewModel(recipeUseCase: recipeUseCase, actions: actions)
-        recipeViewController.viewModel = viewModel
+        let recipeViewController = RecipeListViewController(viewModel: viewModel)
 
         return recipeViewController
     }
