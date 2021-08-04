@@ -31,7 +31,6 @@
 		9AAE220D26A5D18F000483E2 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE220426A5D18F000483E2 /* Observable.swift */; };
 		9AAE220E26A5D18F000483E2 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE220526A5D18F000483E2 /* LoadingView.swift */; };
 		9AAE222426A5D350000483E2 /* RecipeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE221326A5D350000483E2 /* RecipeListViewModel.swift */; };
-		9AAE222626A5D350000483E2 /* Recipe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE221626A5D350000483E2 /* Recipe.storyboard */; };
 		9AAE222726A5D350000483E2 /* RecipeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE221A26A5D350000483E2 /* RecipeListViewController.swift */; };
 		9AAE222826A5D350000483E2 /* RecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE221D26A5D350000483E2 /* RecipeTableViewCell.xib */; };
 		9AAE222926A5D350000483E2 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE221E26A5D350000483E2 /* RecipeTableViewCell.swift */; };
@@ -105,7 +104,6 @@
 		9AAE220426A5D18F000483E2 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		9AAE220526A5D18F000483E2 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		9AAE221326A5D350000483E2 /* RecipeListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeListViewModel.swift; sourceTree = "<group>"; };
-		9AAE221726A5D350000483E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Recipe.storyboard; sourceTree = "<group>"; };
 		9AAE221A26A5D350000483E2 /* RecipeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeListViewController.swift; sourceTree = "<group>"; };
 		9AAE221D26A5D350000483E2 /* RecipeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeTableViewCell.xib; sourceTree = "<group>"; };
 		9AAE221E26A5D350000483E2 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
@@ -348,7 +346,6 @@
 		9AAE221026A5D350000483E2 /* Recipe */ = {
 			isa = PBXGroup;
 			children = (
-				9AAE221626A5D350000483E2 /* Recipe.storyboard */,
 				9AAE224A26A63EF5000483E2 /* RecipeDetails */,
 				9AAE221126A5D350000483E2 /* RecipeList */,
 			);
@@ -614,7 +611,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AAE222D26A5D350000483E2 /* DateTableViewCell.xib in Resources */,
-				9AAE222626A5D350000483E2 /* Recipe.storyboard in Resources */,
 				9AAE21B226A5CCAB000483E2 /* LaunchScreen.storyboard in Resources */,
 				9AAE224226A5D3EE000483E2 /* Assets.xcassets in Resources */,
 				9AAE222826A5D350000483E2 /* RecipeTableViewCell.xib in Resources */,
@@ -722,14 +718,6 @@
 				9AAE21B126A5CCAB000483E2 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		9AAE221626A5D350000483E2 /* Recipe.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9AAE221726A5D350000483E2 /* Base */,
-			);
-			name = Recipe.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

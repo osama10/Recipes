@@ -15,10 +15,9 @@ final class RecipeDetailsViewBuilder {
     }
 
     func build(actions: RecipeDetailsViewActions) -> RecipeDetailsViewController {
-        let storyboard = UIStoryboard(storyboard: .recipe)
-        let viewController: RecipeDetailsViewController = storyboard.instantiateViewController()
         let viewModel = RecipeDetailsViewModel(recipe: recipe, actions: actions)
-        viewController.viewModel = viewModel
+        let viewController = RecipeDetailsViewController(viewModel: viewModel)
+
         return viewController
     }
 }
