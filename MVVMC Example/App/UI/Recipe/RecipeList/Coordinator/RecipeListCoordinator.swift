@@ -16,7 +16,7 @@ final class RecipeListCoordinator: BaseCoordinator<UINavigationController> {
     struct Dependency {
         private let builder: RecipeListViewBuilder
         let rootViewController: UINavigationController
-
+        
         init(builder: RecipeListViewBuilder, rootViewController: UINavigationController) {
             self.builder = builder
             self.rootViewController = rootViewController
@@ -31,7 +31,7 @@ final class RecipeListCoordinator: BaseCoordinator<UINavigationController> {
 
     override func start() {
         let controller = dependency.buildViewController(actions: self)
-        rootViewController.pushViewController(controller, animated: true)
+        parentViewController.pushViewController(controller, animated: true)
     }
 
     init(dependency: Dependency) {
@@ -43,7 +43,7 @@ final class RecipeListCoordinator: BaseCoordinator<UINavigationController> {
 extension RecipeListCoordinator: RecipeListActions {
     func didTapRecipe(recipe: Recipe) {
         let builder = RecipeDetailsViewBuilder(recipe: recipe)
-        let dependency = RecipeDetailsCoordinator.Dependency(builder: builder, rootViewController: rootViewController)
+        let dependency = RecipeDetailsCoordinator.Dependency(builder: builder, rootViewController: parentViewController)
         let coordinator = RecipeDetailsCoordinator(dependency: dependency)
         childCoordinator = coordinator
         coordinator.start()

@@ -11,7 +11,8 @@ import UIKit
 class BaseCoordinator<T: UIViewController>: Coordinator {
     weak var parentCoordinator: Coordinator?
 
-    let rootViewController: T
+    let parentViewController: T
+
 
     var childCoordinator: Coordinator? {
         didSet {
@@ -21,7 +22,7 @@ class BaseCoordinator<T: UIViewController>: Coordinator {
 
     // MARK: - Lifecycle
     init(rootViewController: T) {
-        self.rootViewController = rootViewController
+        self.parentViewController = rootViewController
     }
 
     // MARK: - Cooordinator

@@ -35,12 +35,12 @@ final class RecipeDetailsCoordinator: BaseCoordinator<UINavigationController> {
     
     override func start() {
         let viewController = dependency.buildViewController(actions: self)
-        rootViewController.pushViewController(viewController, animated: true)
+        parentViewController.pushViewController(viewController, animated: true)
     }
 }
 
 extension RecipeDetailsCoordinator: RecipeDetailsViewActions {
     func didTapBackButton() {
-        rootViewController.popViewController(animated: true)
+        parentViewController.popViewController(animated: true)
     }
 }
