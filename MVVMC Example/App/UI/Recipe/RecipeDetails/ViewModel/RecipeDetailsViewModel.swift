@@ -15,6 +15,7 @@ protocol RecipeDetailsViewModelOutput {
 
 protocol RecipeDetailsViewModelInput {
     func didTapBackButton()
+    func didTapActionsButton()
 }
 
 protocol RecipeDetailsViewModelProtocol: RecipeDetailsViewModelInput, RecipeDetailsViewModelOutput {
@@ -36,5 +37,9 @@ final class RecipeDetailsViewModel: RecipeDetailsViewModelProtocol {
     
     func didTapBackButton() {
         actions?.didTapBackButton()
+    }
+
+    func didTapActionsButton() {
+        actions?.didTapActionsButton(recipe: recipe)
     }
 }

@@ -25,14 +25,14 @@ extension UIView {
     }
 }
 
-protocol ReusableView : class {  static var reuseIdentifier : String {get} }
+protocol ReusableView : AnyObject {  static var reuseIdentifier : String {get} }
 extension ReusableView where Self : UIView {
     static var reuseIdentifier : String {
         return String(describing: self).components(separatedBy: ".").last!
     }
 }
 
-protocol NibLoadableView : class { static var nibName : String {get} }
+protocol NibLoadableView : AnyObject { static var nibName : String {get} }
 extension NibLoadableView where Self : UIView {
     static var nibName : String {
         return String(describing: self).components(separatedBy: ".").last!

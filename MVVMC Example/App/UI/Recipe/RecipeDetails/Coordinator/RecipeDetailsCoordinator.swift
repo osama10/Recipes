@@ -9,6 +9,7 @@ import UIKit
 
 protocol RecipeDetailsViewActions: AnyObject {
     func didTapBackButton()
+    func didTapActionsButton(recipe: Recipe)
 }
 
 final class RecipeDetailsCoordinator: BaseCoordinator<UINavigationController> {
@@ -42,5 +43,13 @@ final class RecipeDetailsCoordinator: BaseCoordinator<UINavigationController> {
 extension RecipeDetailsCoordinator: RecipeDetailsViewActions {
     func didTapBackButton() {
         parentViewController.popViewController(animated: true)
+    }
+
+    func didTapActionsButton(recipe: Recipe) {
+        let viewBuilder = ActionsViewBuilder(recipe: recipe)
+        let dependency = ActionsCoordinator.Dependency(builder: viewBuilder, rootViewController: parentViewController)
+        let coordinator = ActionsCoordinator(dependency: dependency)
+        childCoordinator = coordinator
+        coordinator.start()
     }
 }

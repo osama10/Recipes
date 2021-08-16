@@ -31,6 +31,16 @@ final class RecipeDetailsViewController: UIViewController {
         return label
     }()
 
+    private lazy var actionsButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Show Actions", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .themeColor
+        button.layer.cornerRadius = 4
+        button.contentEdgeInsets = UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10)
+        return button
+    }()
+
     private let viewModel: RecipeDetailsViewModel
 
     init(viewModel: RecipeDetailsViewModel) {
@@ -54,6 +64,7 @@ final class RecipeDetailsViewController: UIViewController {
         view.addSubview(imageView)
         view.addSubview(recipeTitle)
         view.addSubview(recipeHeadline)
+        view.addSubview(actionsButton)
         view.backgroundColor = .white
 
         imageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -68,6 +79,9 @@ final class RecipeDetailsViewController: UIViewController {
         recipeHeadline.topAnchor.constraint(equalTo: recipeTitle.bottomAnchor, constant: 10).isActive = true
         recipeHeadline.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         recipeHeadline.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10).isActive = true
+
+        actionsButton.topAnchor.constraint(equalTo: recipeHeadline.bottomAnchor, constant: 30).isActive = true
+        actionsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
     }
 
     private func bindViewModel() {
@@ -78,9 +92,13 @@ final class RecipeDetailsViewController: UIViewController {
 
     private func setActions() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(didTapBackButton))
+        self.actionsButton.addTarget(self, action: #selector(actionsButtonTapped), for: .touchUpInside)
     }
 
     @objc func didTapBackButton() {
         viewModel.didTapBackButton()
+    }
+    @objc func actionsButtonTapped() {
+        viewModel.didTapActionsButton()
     }
 }
