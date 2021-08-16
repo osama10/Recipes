@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol AlertsPresentable : class {}
+protocol AlertsPresentable : AnyObject {}
 extension AlertsPresentable where Self : UIViewController {
 
     func showAlert(with title: String? = nil , and message: String? = nil){
@@ -18,5 +18,4 @@ extension AlertsPresentable where Self : UIViewController {
         present(alertController, animated: true, completion: nil)
 
     }
-
 }
