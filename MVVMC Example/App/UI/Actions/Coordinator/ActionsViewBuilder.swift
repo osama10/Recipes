@@ -14,8 +14,8 @@ final class ActionsViewBuilder {
         self.recipe = recipe
     }
 
-    func build() -> ActionsViewController {
-        let viewModel = ActionsViewModel(recipe: recipe)
+    func build(actions: ActionsViewControllerActions) -> ActionsViewController {
+        let viewModel = ActionsViewModel(recipe: recipe, actions: actions)
         let viewController = ActionsViewController(viewModel: viewModel)
 
         return viewController

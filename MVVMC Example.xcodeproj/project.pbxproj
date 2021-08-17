@@ -53,6 +53,7 @@
 		9ACBC10726B9797800B5B0D2 /* RecipeDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACBC10626B9797800B5B0D2 /* RecipeDetailsCoordinator.swift */; };
 		9ACBC10926B97AE800B5B0D2 /* RecipeDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACBC10826B97AE800B5B0D2 /* RecipeDetailsViewModel.swift */; };
 		9ACBC10B26BAC1CE00B5B0D2 /* HFTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACBC10A26BAC1CE00B5B0D2 /* HFTabBarController.swift */; };
+		C34052ED26CBE71900824B57 /* DateViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34052EC26CBE71900824B57 /* DateViewCoordinator.swift */; };
 		C38C658226B96976008A3975 /* RecipeListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C658126B96976008A3975 /* RecipeListCoordinator.swift */; };
 		EF30F4EE26C844B0008D6980 /* ActionsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF30F4ED26C844B0008D6980 /* ActionsCoordinator.swift */; };
 		EF30F4F026C844E3008D6980 /* ActionsViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF30F4EF26C844E3008D6980 /* ActionsViewBuilder.swift */; };
@@ -131,6 +132,7 @@
 		9ACBC10626B9797800B5B0D2 /* RecipeDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsCoordinator.swift; sourceTree = "<group>"; };
 		9ACBC10826B97AE800B5B0D2 /* RecipeDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsViewModel.swift; sourceTree = "<group>"; };
 		9ACBC10A26BAC1CE00B5B0D2 /* HFTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFTabBarController.swift; sourceTree = "<group>"; };
+		C34052EC26CBE71900824B57 /* DateViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewCoordinator.swift; sourceTree = "<group>"; };
 		C38C658126B96976008A3975 /* RecipeListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListCoordinator.swift; sourceTree = "<group>"; };
 		EF30F4ED26C844B0008D6980 /* ActionsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsCoordinator.swift; sourceTree = "<group>"; };
 		EF30F4EF26C844E3008D6980 /* ActionsViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsViewBuilder.swift; sourceTree = "<group>"; };
@@ -556,6 +558,7 @@
 			isa = PBXGroup;
 			children = (
 				F9DC033826CBE0C80046B96F /* DateViewController.swift */,
+				C34052EC26CBE71900824B57 /* DateViewCoordinator.swift */,
 			);
 			path = Date;
 			sourceTree = "<group>";
@@ -735,6 +738,7 @@
 				9AAE222C26A5D350000483E2 /* DateCellViewModel.swift in Sources */,
 				9AAE220B26A5D18F000483E2 /* UITableView+Extensions.swift in Sources */,
 				9AAE222426A5D350000483E2 /* RecipeListViewModel.swift in Sources */,
+				C34052ED26CBE71900824B57 /* DateViewCoordinator.swift in Sources */,
 				9AAE222A26A5D350000483E2 /* RecipeCellViewModel.swift in Sources */,
 				9AAE220926A5D18F000483E2 /* UIFont+Extensions.swift in Sources */,
 				C38C658226B96976008A3975 /* RecipeListCoordinator.swift in Sources */,

@@ -18,6 +18,7 @@ final class ActionsViewController: UIViewController, DynamicActionSheetViewContr
         rateButton.backgroundColor = .themeColor
         rateButton.layer.cornerRadius = 4
         rateButton.contentEdgeInsets = UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10)
+        rateButton.addTarget(self, action: #selector(rateButtonTapped), for: .touchUpInside)
         return rateButton
     }()
 
@@ -73,6 +74,10 @@ final class ActionsViewController: UIViewController, DynamicActionSheetViewContr
 
         stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
+    }
+
+    @objc private func rateButtonTapped() {
+        viewModel.rateButtonTapped()
     }
 }
 

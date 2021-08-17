@@ -10,7 +10,14 @@ import Foundation
 final class ActionsViewModel {
     private let recipe: Recipe
 
-    init(recipe: Recipe) {
+    private weak var actions: ActionsViewControllerActions?
+
+    init(recipe: Recipe, actions: ActionsViewControllerActions) {
         self.recipe = recipe
+        self.actions = actions
+    }
+
+    func rateButtonTapped() {
+        actions?.didTapRateButton()
     }
 }

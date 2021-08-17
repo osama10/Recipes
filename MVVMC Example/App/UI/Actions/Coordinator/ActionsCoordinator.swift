@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ActionsViewControllerActions: AnyObject {
+    func didTapRateButton()
+}
+
 final class ActionsCoordinator: BaseCoordinator<UINavigationController> {
     struct Dependency {
         private let builder: ActionsViewBuilder
@@ -17,8 +21,8 @@ final class ActionsCoordinator: BaseCoordinator<UINavigationController> {
             self.rootViewController = rootViewController
         }
 
-        func buildViewController() -> ActionsViewController {
-            builder.build()
+        func buildViewController(actions: ActionsViewControllerActions) -> ActionsViewController {
+            builder.build(actions: actions)
         }
     }
 
@@ -30,7 +34,7 @@ final class ActionsCoordinator: BaseCoordinator<UINavigationController> {
     }
 
     override func start() {
-        let viewController = dependency.buildViewController()
+        let viewController = dependency.buildViewController(actions: self)
         let actionSheetController = DynamicActionSheetController.create(
             from: dependency.rootViewController,
             rootViewController: viewController,
@@ -47,3 +51,11 @@ extension ActionsCoordinator: DynamicActionSheetControllerDismissalDelegate {
     }
 }
 
+// MARK: ActionsViewControllerActions
+extension ActionsCoordinator: ActionsViewControllerActions {
+    func didTapRateButton() {
+        let coordinator = DateViewCoordinator(rootViewController: parentViewController)
+        self.childCoordinator = coordinator
+        coordinator.start()
+    }
+}
