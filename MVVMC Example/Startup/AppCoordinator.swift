@@ -23,7 +23,7 @@ final class AppCoordinator: BaseCoordinator<UITabBarController> {
     }
     
     private func prepareForLaunch() {
-        tabBar.viewControllers = [recipeListView()]
+        tabBar.viewControllers = [recipeListView(), dateView()]
         window.rootViewController = tabBar
     }
     
@@ -34,6 +34,13 @@ final class AppCoordinator: BaseCoordinator<UITabBarController> {
         let coordinator = RecipeListCoordinator(dependency: dependancy)
         childCoordinator = coordinator
         childCoordinator?.start()
+        parentViewController.tabBarItem.title = "Recipe List"
         return parentViewController
+    }
+
+    private func dateView() -> UIViewController {
+        let dateView = DateViewController()
+        dateView.tabBarItem.title = "Date"
+        return dateView
     }
 }

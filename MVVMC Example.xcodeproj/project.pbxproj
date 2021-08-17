@@ -60,6 +60,7 @@
 		EF30F4F426C84567008D6980 /* ActionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF30F4F326C84567008D6980 /* ActionsViewModel.swift */; };
 		EF30F4F626C850CF008D6980 /* DynamicActionSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF30F4F526C850CF008D6980 /* DynamicActionSheetController.swift */; };
 		F97BF54826B98A730018F58F /* RecipeDetailsViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97BF54726B98A730018F58F /* RecipeDetailsViewBuilder.swift */; };
+		F9DC033926CBE0C80046B96F /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DC033826CBE0C80046B96F /* DateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,7 @@
 		EF30F4F326C84567008D6980 /* ActionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsViewModel.swift; sourceTree = "<group>"; };
 		EF30F4F526C850CF008D6980 /* DynamicActionSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicActionSheetController.swift; sourceTree = "<group>"; };
 		F97BF54726B98A730018F58F /* RecipeDetailsViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsViewBuilder.swift; sourceTree = "<group>"; };
+		F9DC033826CBE0C80046B96F /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +253,7 @@
 				9A68FD6B26A70D6B002F131D /* Coordinator */,
 				EF30F4E926C84471008D6980 /* Actions */,
 				9AAE221026A5D350000483E2 /* Recipe */,
+				F9DC033726CBE09D0046B96F /* Date */,
 				9AAE21FC26A5D18F000483E2 /* Utils */,
 				9ACBC10A26BAC1CE00B5B0D2 /* HFTabBarController.swift */,
 				EF30F4F526C850CF008D6980 /* DynamicActionSheetController.swift */,
@@ -549,6 +552,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		F9DC033726CBE09D0046B96F /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				F9DC033826CBE0C80046B96F /* DateViewController.swift */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -694,6 +705,7 @@
 				9AAE21FA26A5CF8F000483E2 /* DataFetchingError.swift in Sources */,
 				9AAE21E026A5CE49000483E2 /* NetworkManager.swift in Sources */,
 				9AAE222726A5D350000483E2 /* RecipeListViewController.swift in Sources */,
+				F9DC033926CBE0C80046B96F /* DateViewController.swift in Sources */,
 				EF30F4F226C84504008D6980 /* ActionsViewController.swift in Sources */,
 				9ACBC10526B978FC00B5B0D2 /* RecipeListViewBuilder.swift in Sources */,
 				9AAE21E126A5CE49000483E2 /* Networking.swift in Sources */,
