@@ -13,8 +13,13 @@ class DateViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .white
-        let label = UILabel(frame: CGRect(x: 160, y: 384, width: 130, height: 21))
+        let label = UILabel()
         label.text = Date().description
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(label)
+
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
 }
