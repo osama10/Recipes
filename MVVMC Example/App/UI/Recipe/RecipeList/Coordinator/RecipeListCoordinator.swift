@@ -12,14 +12,14 @@ protocol RecipeListActions: AnyObject {
     func didTapRecipe(recipe: Recipe)
 }
 
-final class RecipeListCoordinator: BaseCoordinator<UINavigationController> {
+final class RecipeListCoordinator: BaseCoordinator {
     struct Dependency {
         private let builder: RecipeListViewBuilder
-        let rootViewController: UINavigationController
+        let sourceController: UINavigationController
         
-        init(builder: RecipeListViewBuilder, rootViewController: UINavigationController) {
+        init(builder: RecipeListViewBuilder, parentViewController: UINavigationController) {
             self.builder = builder
-            self.rootViewController = rootViewController
+            self.sourceController = parentViewController
         }
 
         func buildViewController(actions: RecipeListActions) -> RecipeListViewController {
@@ -28,24 +28,29 @@ final class RecipeListCoordinator: BaseCoordinator<UINavigationController> {
     }
 
     private let dependency: Dependency
-
+  
+    private lazy var controller: RecipeListViewController = {
+        dependency.buildViewController(actions: self)
+    }()
+    
     override func start() {
-        let controller = dependency.buildViewController(actions: self)
-        parentViewController.pushViewController(controller, animated: true)
+        dependency
+            .sourceController
+            .pushViewController(controller, animated: true)
     }
 
     init(dependency: Dependency) {
         self.dependency = dependency
-        super.init(rootViewController: dependency.rootViewController)
+        super.init()
     }
 }
 
 extension RecipeListCoordinator: RecipeListActions {
     func didTapRecipe(recipe: Recipe) {
         let builder = RecipeDetailsViewBuilder(recipe: recipe)
-        let dependency = RecipeDetailsCoordinator.Dependency(builder: builder, rootViewController: parentViewController)
+        let dependency = RecipeDetailsCoordinator.Dependency(builder: builder, sourceController: dependency.sourceController)
         let coordinator = RecipeDetailsCoordinator(dependency: dependency)
-        childCoordinator = coordinator
+        childCoordinators.append(coordinator) 
         coordinator.start()
     }
 }

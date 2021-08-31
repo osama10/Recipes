@@ -8,29 +8,38 @@
 import Foundation
 import UIKit
 
-class BaseCoordinator<T: UIViewController>: Coordinator {
+class BaseCoordinator: Coordinator {
+    
     weak var parentCoordinator: Coordinator?
-
-    let parentViewController: T
-
-
-    var childCoordinator: Coordinator? {
-        didSet {
-            childCoordinator?.parentCoordinator = self
-        }
-    }
-
+    var childCoordinators = [Coordinator]()
+   
     // MARK: - Lifecycle
-    init(rootViewController: T) {
-        self.parentViewController = rootViewController
+    init() {
+        
     }
-
+    
     // MARK: - Cooordinator
     func start() {
         assertionFailure("Child coordinator must override this")
     }
     
-    func didFinishChild() {
-        childCoordinator = nil
+    func add(_ coordinator: Coordinator) {
+        guard (childCoordinators.filter{ $0 === coordinator }.count == 0)
+        else { return }
+        childCoordinators.append(coordinator)
     }
+ 
+    func finish() {
+        didFinish(self)
+    }
+  
+    private func didFinish(_ coordinator: Coordinator) {
+        for (index, child) in childCoordinators.enumerated() {
+            if coordinator === child {
+                childCoordinators.remove(at: index)
+                break
+            }
+        }
+    }
+    
 }

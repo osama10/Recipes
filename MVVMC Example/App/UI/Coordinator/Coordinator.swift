@@ -9,8 +9,16 @@ import Foundation
 
 protocol Coordinator: AnyObject {
     var parentCoordinator: Coordinator? { get set }
-    var childCoordinator: Coordinator? { get }
+    var childCoordinators: [Coordinator] { get }
     
     func start()
-    func didFinishChild()
+    
+    func add(_ coordinator: Coordinator)
+    func finish()
 }
+
+protocol DeepLinkCoordinator: AnyObject {
+    func goToDeepLink(_ url: URL)
+}
+
+typealias ActualCoordinator = Coordinator & DeepLinkCoordinator

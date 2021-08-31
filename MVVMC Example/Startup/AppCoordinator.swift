@@ -7,14 +7,13 @@
 
 import UIKit
 
-final class AppCoordinator: BaseCoordinator<UITabBarController> {
+final class AppCoordinator: BaseCoordinator {
     private let window: UIWindow
     let tabBar = HFTabBarController()
     
     init(window: UIWindow) {
         self.window = window
-
-        super.init(rootViewController: tabBar)
+        super.init()
     }
     
     override func start() {
@@ -30,10 +29,10 @@ final class AppCoordinator: BaseCoordinator<UITabBarController> {
     private func recipeListView() -> UIViewController {
         let useCase = RecipeUseCase(recipeRepository: RecipeRepository(dataStore: RecipeDataStore(networkManager: NetworkManager())))
         let parentViewController = HFNavigationController()
-        let dependancy = RecipeListCoordinator.Dependency(builder: RecipeListViewBuilder(recipeUseCase: useCase), rootViewController: parentViewController)
+        let dependancy = RecipeListCoordinator.Dependency(builder: RecipeListViewBuilder(recipeUseCase: useCase), parentViewController: parentViewController)
         let coordinator = RecipeListCoordinator(dependency: dependancy)
-        childCoordinator = coordinator
-        childCoordinator?.start()
+        childCoordinators.append(coordinator)
+        coordinator.start()
         parentViewController.tabBarItem.title = "Recipe List"
         return parentViewController
     }

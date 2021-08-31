@@ -11,14 +11,15 @@ protocol ActionsViewControllerActions: AnyObject {
     func didTapRateButton()
 }
 
-final class ActionsCoordinator: BaseCoordinator<UINavigationController> {
+final class ActionsCoordinator: BaseCoordinator {
     struct Dependency {
         private let builder: ActionsViewBuilder
-        let rootViewController: UINavigationController
-
-        init(builder: ActionsViewBuilder, rootViewController: UINavigationController) {
+        let sourceController: UIViewController
+        
+        init(builder: ActionsViewBuilder,
+             sourceController: UIViewController) {
             self.builder = builder
-            self.rootViewController = rootViewController
+            self.sourceController = sourceController
         }
 
         func buildViewController(actions: ActionsViewControllerActions) -> ActionsViewController {
@@ -28,18 +29,23 @@ final class ActionsCoordinator: BaseCoordinator<UINavigationController> {
 
     private let dependency: Dependency
 
+    private lazy var viewController: ActionsViewController = {
+        dependency.buildViewController(actions: self)
+    }()
+    
     init(dependency: Dependency) {
         self.dependency = dependency
-        super.init(rootViewController: dependency.rootViewController)
+        super.init()
     }
 
     override func start() {
-        let viewController = dependency.buildViewController(actions: self)
+        
         let actionSheetController = DynamicActionSheetController.create(
-            from: dependency.rootViewController,
+            from: dependency.sourceController,
             rootViewController: viewController,
             style: .noTopGap
         )
+       
         actionSheetController.dismissalDelegate = self
     }
 }
@@ -47,15 +53,16 @@ final class ActionsCoordinator: BaseCoordinator<UINavigationController> {
 // MARK: - DynamicActionSheetControllerDismissalDelegate
 extension ActionsCoordinator: DynamicActionSheetControllerDismissalDelegate {
     func manuallyDismissedDynamicActionSheetController() {
-        parentViewController.popViewController(animated: true)
+        finish()
     }
 }
 
 // MARK: ActionsViewControllerActions
 extension ActionsCoordinator: ActionsViewControllerActions {
     func didTapRateButton() {
-        let coordinator = DateViewCoordinator(rootViewController: parentViewController)
-        self.childCoordinator = coordinator
+        let coordinator = DateViewCoordinator(flow: .rateIt, sourceController: viewController)
+        
+        childCoordinators.append(coordinator)
         coordinator.start()
     }
 }

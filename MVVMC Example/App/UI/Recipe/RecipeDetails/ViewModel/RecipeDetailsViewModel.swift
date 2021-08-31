@@ -41,5 +41,6 @@ final class RecipeDetailsViewModel: RecipeDetailsViewModelProtocol {
 
     func didTapActionsButton() {
         actions?.didTapActionsButton(recipe: recipe)
+        
     }
 }

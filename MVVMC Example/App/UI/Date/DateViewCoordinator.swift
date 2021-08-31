@@ -7,10 +7,30 @@
 
 import UIKit
 
-final class DateViewCoordinator: BaseCoordinator<UINavigationController> {
+final class DateViewCoordinator: BaseCoordinator {
+    enum Flow {
+        case date
+        case rateIt
+    }
+    
+    private let flow: Flow
 
+    let sourceController: DynamicActionSheetViewController
+    
+    init(flow: Flow, sourceController: DynamicActionSheetViewController) {
+        self.flow = flow
+        self.sourceController = sourceController
+        super.init()
+    }
+    
     override func start() {
-        parentViewController.pushViewController(dateView(), animated: true)
+        switch flow {
+        case .date:
+            sourceController.present(dateView(), animated: true, completion: nil)
+        case .rateIt:
+            sourceController.present(dateView(), animated: true, completion: nil)
+
+        }
     }
 
     private func dateView() -> UIViewController {

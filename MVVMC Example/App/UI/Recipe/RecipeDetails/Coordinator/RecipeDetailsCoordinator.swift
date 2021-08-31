@@ -12,14 +12,15 @@ protocol RecipeDetailsViewActions: AnyObject {
     func didTapActionsButton(recipe: Recipe)
 }
 
-final class RecipeDetailsCoordinator: BaseCoordinator<UINavigationController> {
+final class RecipeDetailsCoordinator: BaseCoordinator {
     struct Dependency {
         private let builder: RecipeDetailsViewBuilder
-        let rootViewController: UINavigationController
+        let sourceController: UINavigationController
         
-        init(builder: RecipeDetailsViewBuilder, rootViewController: UINavigationController) {
+        init(builder: RecipeDetailsViewBuilder,
+             sourceController: UINavigationController) {
             self.builder = builder
-            self.rootViewController = rootViewController
+            self.sourceController = sourceController
         }
         
         func buildViewController(actions: RecipeDetailsViewActions) -> RecipeDetailsViewController {
@@ -28,28 +29,36 @@ final class RecipeDetailsCoordinator: BaseCoordinator<UINavigationController> {
     }
     
     private let dependency: Dependency
+    private lazy var detailViewController: RecipeDetailsViewController =  {
+        dependency.buildViewController(actions: self)
+    }()
     
     init(dependency: Dependency) {
         self.dependency = dependency
-        super.init(rootViewController: dependency.rootViewController)
+        super.init()
     }
     
     override func start() {
-        let viewController = dependency.buildViewController(actions: self)
-        parentViewController.pushViewController(viewController, animated: true)
+        dependency
+            .sourceController
+            .pushViewController(detailViewController, animated: true)
     }
 }
 
 extension RecipeDetailsCoordinator: RecipeDetailsViewActions {
     func didTapBackButton() {
-        parentViewController.popViewController(animated: true)
+        dependency
+            .sourceController
+            .popViewController(animated: true)
+        
+        finish()
     }
 
     func didTapActionsButton(recipe: Recipe) {
         let viewBuilder = ActionsViewBuilder(recipe: recipe)
-        let dependency = ActionsCoordinator.Dependency(builder: viewBuilder, rootViewController: parentViewController)
+        let dependency = ActionsCoordinator.Dependency(builder: viewBuilder, sourceController: detailViewController)
         let coordinator = ActionsCoordinator(dependency: dependency)
-        childCoordinator = coordinator
+        childCoordinators.append(coordinator) 
         coordinator.start()
     }
 }
