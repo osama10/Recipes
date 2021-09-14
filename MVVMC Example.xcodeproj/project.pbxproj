@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F98517D26F0D0C400724973 /* DateAndTimeContainerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98517C26F0D0C400724973 /* DateAndTimeContainerCoordinator.swift */; };
+		7F98517F26F0D16F00724973 /* DateAndTimeContainerViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98517E26F0D16F00724973 /* DateAndTimeContainerViewBuilder.swift */; };
+		7F98518126F0D26500724973 /* DateAndTimeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98518026F0D26500724973 /* DateAndTimeContainerViewController.swift */; };
+		7F98518326F0D29700724973 /* DateAndTimeContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98518226F0D29700724973 /* DateAndTimeContainerViewModel.swift */; };
 		9A68FD6D26A70D7A002F131D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A68FD6C26A70D7A002F131D /* Coordinator.swift */; };
 		9A68FD6F26A70E52002F131D /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A68FD6E26A70E52002F131D /* BaseCoordinator.swift */; };
 		9AAE21B226A5CCAB000483E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE21B026A5CCAB000483E2 /* LaunchScreen.storyboard */; };
@@ -82,6 +86,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7F98517C26F0D0C400724973 /* DateAndTimeContainerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeContainerCoordinator.swift; sourceTree = "<group>"; };
+		7F98517E26F0D16F00724973 /* DateAndTimeContainerViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeContainerViewBuilder.swift; sourceTree = "<group>"; };
+		7F98518026F0D26500724973 /* DateAndTimeContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeContainerViewController.swift; sourceTree = "<group>"; };
+		7F98518226F0D29700724973 /* DateAndTimeContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeContainerViewModel.swift; sourceTree = "<group>"; };
 		9A68FD6C26A70D7A002F131D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		9A68FD6E26A70E52002F131D /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		9AAE21A226A5CCAB000483E2 /* MVVMC Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVVMC Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +178,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F98517A26F0D02300724973 /* DateAndTime */ = {
+			isa = PBXGroup;
+			children = (
+				7F98517B26F0D03000724973 /* Container */,
+				F9DC033726CBE09D0046B96F /* Date */,
+			);
+			path = DateAndTime;
+			sourceTree = "<group>";
+		};
+		7F98517B26F0D03000724973 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				7F98517C26F0D0C400724973 /* DateAndTimeContainerCoordinator.swift */,
+				7F98517E26F0D16F00724973 /* DateAndTimeContainerViewBuilder.swift */,
+				7F98518026F0D26500724973 /* DateAndTimeContainerViewController.swift */,
+				7F98518226F0D29700724973 /* DateAndTimeContainerViewModel.swift */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
 		9A68FD6B26A70D6B002F131D /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,10 +280,10 @@
 		9AAE21DA26A5CD01000483E2 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				7F98517A26F0D02300724973 /* DateAndTime */,
 				9A68FD6B26A70D6B002F131D /* Coordinator */,
 				EF30F4E926C84471008D6980 /* Actions */,
 				9AAE221026A5D350000483E2 /* Recipe */,
-				F9DC033726CBE09D0046B96F /* Date */,
 				9AAE21FC26A5D18F000483E2 /* Utils */,
 				9ACBC10A26BAC1CE00B5B0D2 /* HFTabBarController.swift */,
 				EF30F4F526C850CF008D6980 /* DynamicActionSheetController.swift */,
@@ -711,6 +739,7 @@
 				F9DC033926CBE0C80046B96F /* DateViewController.swift in Sources */,
 				EF30F4F226C84504008D6980 /* ActionsViewController.swift in Sources */,
 				9ACBC10526B978FC00B5B0D2 /* RecipeListViewBuilder.swift in Sources */,
+				7F98518126F0D26500724973 /* DateAndTimeContainerViewController.swift in Sources */,
 				9AAE21E126A5CE49000483E2 /* Networking.swift in Sources */,
 				9AAE220E26A5D18F000483E2 /* LoadingView.swift in Sources */,
 				9AAE21F826A5CF8F000483E2 /* RecipeRepositoryProtocol.swift in Sources */,
@@ -725,6 +754,7 @@
 				9ACBC10B26BAC1CE00B5B0D2 /* HFTabBarController.swift in Sources */,
 				9ACBC10726B9797800B5B0D2 /* RecipeDetailsCoordinator.swift in Sources */,
 				9AAE220726A5D18F000483E2 /* UIViewController+Extensions.swift in Sources */,
+				7F98517D26F0D0C400724973 /* DateAndTimeContainerCoordinator.swift in Sources */,
 				9AAE224026A5D3EE000483E2 /* SceneDelegate.swift in Sources */,
 				9AAE222926A5D350000483E2 /* RecipeTableViewCell.swift in Sources */,
 				9AAE220D26A5D18F000483E2 /* Observable.swift in Sources */,
@@ -735,6 +765,7 @@
 				9AAE21ED26A5CEA1000483E2 /* RecipeDataStore.swift in Sources */,
 				9AAE21EA26A5CE8B000483E2 /* RecipeDataModel.swift in Sources */,
 				9AAE21E726A5CE77000483E2 /* RecipeRepository.swift in Sources */,
+				7F98518326F0D29700724973 /* DateAndTimeContainerViewModel.swift in Sources */,
 				9AAE222C26A5D350000483E2 /* DateCellViewModel.swift in Sources */,
 				9AAE220B26A5D18F000483E2 /* UITableView+Extensions.swift in Sources */,
 				9AAE222426A5D350000483E2 /* RecipeListViewModel.swift in Sources */,
@@ -749,6 +780,7 @@
 				9AAE225126A642F7000483E2 /* RecipeDetailsViewController.swift in Sources */,
 				9AAE223E26A5D3EE000483E2 /* RecipeDIContainer.swift in Sources */,
 				9AAE224126A5D3EE000483E2 /* Constants.swift in Sources */,
+				7F98517F26F0D16F00724973 /* DateAndTimeContainerViewBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
