@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SDWebImage
+import Kingfisher
 
 class RecipeTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
    
@@ -36,11 +36,11 @@ class RecipeTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
     func setupData(viewModel: RecipeCellViewModel) {
         titleLabel.text = viewModel.recipe.title
         headlinesLabel.text = viewModel.recipe.headline
-        recipeImageView.sd_setImage(with: URL(string: viewModel.recipe.image), placeholderImage: #imageLiteral(resourceName: "food_placeholder"))
+        recipeImageView.kf.setImage(with: URL(string: viewModel.recipe.image), placeholder: #imageLiteral(resourceName: "food_placeholder"))
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        recipeImageView.sd_cancelCurrentImageLoad()
+        recipeImageView.kf.cancelDownloadTask()
     }
 }

@@ -87,7 +87,7 @@ final class RecipeDetailsViewController: UIViewController {
     private func bindViewModel() {
         recipeTitle.text = viewModel.title
         recipeHeadline.text = viewModel.headline
-        imageView.sd_setImage(with: viewModel.image, completed: nil)
+        imageView.kf.setImage(with: viewModel.image)
     }
 
     private func setActions() {
