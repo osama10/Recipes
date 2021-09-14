@@ -8,9 +8,18 @@
 import Foundation
 import UIKit
 final class DateAndTimeContainerViewBuilder {
-    let childViewControllers: [UIViewController]
+    private let childViewControllers: [UIViewController]
 
     init(childViewControllers: [UIViewController]) {
         self.childViewControllers = childViewControllers
+    }
+
+    func build() -> DateAndTimeContainerViewController {
+        let viewModel = DateAndTimeContainerViewModel()
+
+        let dateAndTimeViewController = DateAndTimeContainerViewController(viewModel: viewModel, childViews: childViewControllers)
+        dateAndTimeViewController.title = "Date & Time"
+        dateAndTimeViewController.tabBarItem.title = "Date & Time"
+        return dateAndTimeViewController
     }
 }

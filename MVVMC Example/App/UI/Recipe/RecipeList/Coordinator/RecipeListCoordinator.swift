@@ -17,9 +17,9 @@ final class RecipeListCoordinator: BaseCoordinator {
         private let builder: RecipeListViewBuilder
         let sourceController: UINavigationController
         
-        init(builder: RecipeListViewBuilder, parentViewController: UINavigationController) {
+        init(builder: RecipeListViewBuilder, sourceController: UINavigationController) {
             self.builder = builder
-            self.sourceController = parentViewController
+            self.sourceController = sourceController
         }
 
         func buildViewController(actions: RecipeListActions) -> RecipeListViewController {
