@@ -15,9 +15,9 @@ final class DateViewCoordinator: BaseCoordinator {
     
     private let flow: Flow
 
-    let sourceController: DynamicActionSheetViewController
+    let sourceController: UIViewController
     
-    init(flow: Flow, sourceController: DynamicActionSheetViewController) {
+    init(flow: Flow, sourceController: UIViewController) {
         self.flow = flow
         self.sourceController = sourceController
         super.init()

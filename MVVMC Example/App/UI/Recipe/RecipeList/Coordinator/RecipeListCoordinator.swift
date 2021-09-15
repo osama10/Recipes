@@ -54,3 +54,20 @@ extension RecipeListCoordinator: RecipeListActions {
         coordinator.start()
     }
 }
+
+extension RecipeListCoordinator: DeepLinkPerformable {
+    func performDeepLink(_ link: DeepLink) {
+        switch link {
+        case .date:
+            navigateToDateView()
+        default: return
+        }
+    }
+
+    func navigateToDateView() {
+        let coordinator = DateViewCoordinator(flow: .rateIt, sourceController: controller)
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
+}
+

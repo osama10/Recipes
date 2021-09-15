@@ -64,6 +64,7 @@
 		EF30F4F226C84504008D6980 /* ActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF30F4F126C84504008D6980 /* ActionsViewController.swift */; };
 		EF30F4F426C84567008D6980 /* ActionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF30F4F326C84567008D6980 /* ActionsViewModel.swift */; };
 		EF30F4F626C850CF008D6980 /* DynamicActionSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF30F4F526C850CF008D6980 /* DynamicActionSheetController.swift */; };
+		EFE844E426EFDAA4001DDC42 /* DeepLinkPerformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE844E326EFDAA4001DDC42 /* DeepLinkPerformable.swift */; };
 		F97BF54826B98A730018F58F /* RecipeDetailsViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97BF54726B98A730018F58F /* RecipeDetailsViewBuilder.swift */; };
 		F9DC033926CBE0C80046B96F /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DC033826CBE0C80046B96F /* DateViewController.swift */; };
 /* End PBXBuildFile section */
@@ -147,6 +148,7 @@
 		EF30F4F126C84504008D6980 /* ActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsViewController.swift; sourceTree = "<group>"; };
 		EF30F4F326C84567008D6980 /* ActionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsViewModel.swift; sourceTree = "<group>"; };
 		EF30F4F526C850CF008D6980 /* DynamicActionSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicActionSheetController.swift; sourceTree = "<group>"; };
+		EFE844E326EFDAA4001DDC42 /* DeepLinkPerformable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkPerformable.swift; sourceTree = "<group>"; };
 		F97BF54726B98A730018F58F /* RecipeDetailsViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsViewBuilder.swift; sourceTree = "<group>"; };
 		F9DC033826CBE0C80046B96F /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -262,6 +264,7 @@
 				9AAE21DA26A5CD01000483E2 /* UI */,
 				9AAE21F026A5CF8F000483E2 /* Domain */,
 				9AAE21D926A5CCFD000483E2 /* Data */,
+				EFE844E326EFDAA4001DDC42 /* DeepLinkPerformable.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -763,6 +766,7 @@
 				9A68FD6F26A70E52002F131D /* BaseCoordinator.swift in Sources */,
 				9AAE223C26A5D3EE000483E2 /* AppNavigation.swift in Sources */,
 				9AAE21ED26A5CEA1000483E2 /* RecipeDataStore.swift in Sources */,
+				EFE844E426EFDAA4001DDC42 /* DeepLinkPerformable.swift in Sources */,
 				9AAE21EA26A5CE8B000483E2 /* RecipeDataModel.swift in Sources */,
 				9AAE21E726A5CE77000483E2 /* RecipeRepository.swift in Sources */,
 				7F98518326F0D29700724973 /* DateAndTimeContainerViewModel.swift in Sources */,
