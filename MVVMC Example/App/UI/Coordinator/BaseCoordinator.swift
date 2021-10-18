@@ -12,7 +12,7 @@ class BaseCoordinator: Coordinator {
     
     weak var parentCoordinator: Coordinator?
     var childCoordinators = [Coordinator]()
-   
+
     // MARK: - Lifecycle
     init() {
         
@@ -28,18 +28,12 @@ class BaseCoordinator: Coordinator {
         else { return }
         childCoordinators.append(coordinator)
     }
- 
+
     func finish() {
         didFinish(self)
     }
-  
+
     private func didFinish(_ coordinator: Coordinator) {
-        for (index, child) in childCoordinators.enumerated() {
-            if coordinator === child {
-                childCoordinators.remove(at: index)
-                break
-            }
-        }
+        childCoordinators.removeAll()
     }
-    
 }
