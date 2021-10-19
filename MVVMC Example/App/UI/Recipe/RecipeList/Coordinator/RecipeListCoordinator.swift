@@ -50,6 +50,7 @@ extension RecipeListCoordinator: RecipeListActions {
         let builder = RecipeDetailsViewBuilder(recipe: recipe)
         let dependency = RecipeDetailsCoordinator.Dependency(builder: builder, sourceController: dependency.sourceController)
         let coordinator = RecipeDetailsCoordinator(dependency: dependency)
+        coordinator.parentCoordinator = self
         childCoordinators.append(coordinator) 
         coordinator.start()
     }
@@ -66,6 +67,7 @@ extension RecipeListCoordinator: DeepLinkPerformable {
 
     func navigateToDateView() {
         let coordinator = DateViewCoordinator(flow: .rateIt, sourceController: controller)
+        coordinator.parentCoordinator = self
         childCoordinators.append(coordinator)
         coordinator.start()
     }

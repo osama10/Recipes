@@ -58,7 +58,8 @@ extension RecipeDetailsCoordinator: RecipeDetailsViewActions {
         let viewBuilder = ActionsViewBuilder(recipe: recipe)
         let dependency = ActionsCoordinator.Dependency(builder: viewBuilder, sourceController: detailViewController)
         let coordinator = ActionsCoordinator(dependency: dependency)
-        childCoordinators.append(coordinator) 
+        coordinator.parentCoordinator = self
+        childCoordinators.append(coordinator)
         coordinator.start()
     }
 }

@@ -61,7 +61,7 @@ extension ActionsCoordinator: DynamicActionSheetControllerDismissalDelegate {
 extension ActionsCoordinator: ActionsViewControllerActions {
     func didTapRateButton() {
         let coordinator = DateViewCoordinator(flow: .rateIt, sourceController: viewController)
-        
+        coordinator.parentCoordinator = self
         childCoordinators.append(coordinator)
         coordinator.start()
     }

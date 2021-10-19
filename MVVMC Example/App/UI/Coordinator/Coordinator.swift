@@ -9,12 +9,13 @@ import Foundation
 
 protocol Coordinator: AnyObject {
     var parentCoordinator: Coordinator? { get set }
-    var childCoordinators: [Coordinator] { get }
+    var childCoordinators: [Coordinator] { get  }
     
     func start()
     
     func add(_ coordinator: Coordinator)
     func finish()
+    func didFinishChildCoordinator(_ coordinator: Coordinator)
 }
 
 protocol DeepLinkCoordinator: AnyObject {
