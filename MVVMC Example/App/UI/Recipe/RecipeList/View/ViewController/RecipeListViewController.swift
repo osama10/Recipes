@@ -11,6 +11,7 @@ import Combine
 class RecipeListViewController: UITableViewController, AlertsPresentable {
 
     private let viewModel: RecipeListViewModel
+    private var disposables: Set<AnyCancellable> = []
 
     init(viewModel: RecipeListViewModel) {
         self.viewModel = viewModel
@@ -38,7 +39,7 @@ class RecipeListViewController: UITableViewController, AlertsPresentable {
     }
 
     private func bindViewModel() {
-        viewModel.viewStateUpdated = { [weak self] state in
+        viewModel.viewState.sink { [weak self] state in
             guard let self = self else { return }
             switch state {
             case .initial:
@@ -51,7 +52,7 @@ class RecipeListViewController: UITableViewController, AlertsPresentable {
             case .failed(let message):
                 self.showAlert(with: "Error", and: message)
             }
-        }
+        }.store(in: &disposables)
     }
  }
 
