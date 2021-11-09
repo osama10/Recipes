@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct RecipeCellViewModel {
+struct RecipeCellViewModel: Hashable {
     let recipe: Recipe
 }
