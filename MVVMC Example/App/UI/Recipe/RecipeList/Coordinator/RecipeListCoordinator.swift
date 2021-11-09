@@ -15,7 +15,7 @@ protocol RecipeListActions: AnyObject {
 final class RecipeListCoordinator: BaseCoordinator {
     struct Dependency {
         private let builder: RecipeListViewBuilder
-        let sourceController: UINavigationController
+        let sourceController: ViewNavigationProvider
         
         init(builder: RecipeListViewBuilder, sourceController: UINavigationController) {
             self.builder = builder

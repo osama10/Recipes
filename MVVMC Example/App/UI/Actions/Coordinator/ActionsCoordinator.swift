@@ -14,10 +14,10 @@ protocol ActionsViewControllerActions: AnyObject {
 final class ActionsCoordinator: BaseCoordinator {
     struct Dependency {
         private let builder: ActionsViewBuilder
-        let sourceController: UIViewController
+        let sourceController: ViewPresentationProvider
         
         init(builder: ActionsViewBuilder,
-             sourceController: UIViewController) {
+             sourceController: ViewPresentationProvider) {
             self.builder = builder
             self.sourceController = sourceController
         }
@@ -39,7 +39,7 @@ final class ActionsCoordinator: BaseCoordinator {
     }
 
     override func start() {
-        
+
         let actionSheetController = DynamicActionSheetController.create(
             from: dependency.sourceController,
             rootViewController: viewController,

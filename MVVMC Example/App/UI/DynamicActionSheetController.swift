@@ -92,7 +92,7 @@ final class DynamicActionSheetController: UIViewController {
     private let style: Style
     weak var dismissalDelegate: DynamicActionSheetControllerDismissalDelegate?
 
-    static func create(from presenterViewController: UIViewController,
+    static func create(from presenterViewController: ViewPresentationProvider,
                        rootViewController: DynamicActionSheetViewController,
                        style: Style = .default) -> DynamicActionSheetController {
         let viewController = DynamicActionSheetController(style: style)
@@ -101,7 +101,7 @@ final class DynamicActionSheetController: UIViewController {
         viewController.transitioningDelegate = viewController
         viewController.modalPresentationStyle = .custom
 
-        presenterViewController.present(viewController, animated: true)
+        presenterViewController.present(viewController, animated: true, completion: nil)
 
         return viewController
     }
