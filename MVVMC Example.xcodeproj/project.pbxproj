@@ -11,6 +11,7 @@
 		7F98517F26F0D16F00724973 /* DateAndTimeContainerViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98517E26F0D16F00724973 /* DateAndTimeContainerViewBuilder.swift */; };
 		7F98518126F0D26500724973 /* DateAndTimeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98518026F0D26500724973 /* DateAndTimeContainerViewController.swift */; };
 		7F98518326F0D29700724973 /* DateAndTimeContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98518226F0D29700724973 /* DateAndTimeContainerViewModel.swift */; };
+		7FB97CD9273BA81400BBCF44 /* RecipesDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB97CD8273BA81400BBCF44 /* RecipesDiffableDataSource.swift */; };
 		9A68FD6D26A70D7A002F131D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A68FD6C26A70D7A002F131D /* Coordinator.swift */; };
 		9A68FD6F26A70E52002F131D /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A68FD6E26A70E52002F131D /* BaseCoordinator.swift */; };
 		9AAE21B226A5CCAB000483E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE21B026A5CCAB000483E2 /* LaunchScreen.storyboard */; };
@@ -91,6 +92,7 @@
 		7F98517E26F0D16F00724973 /* DateAndTimeContainerViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeContainerViewBuilder.swift; sourceTree = "<group>"; };
 		7F98518026F0D26500724973 /* DateAndTimeContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeContainerViewController.swift; sourceTree = "<group>"; };
 		7F98518226F0D29700724973 /* DateAndTimeContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeContainerViewModel.swift; sourceTree = "<group>"; };
+		7FB97CD8273BA81400BBCF44 /* RecipesDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesDiffableDataSource.swift; sourceTree = "<group>"; };
 		9A68FD6C26A70D7A002F131D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		9A68FD6E26A70E52002F131D /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		9AAE21A226A5CCAB000483E2 /* MVVMC Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVVMC Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +200,14 @@
 				7F98518226F0D29700724973 /* DateAndTimeContainerViewModel.swift */,
 			);
 			path = Container;
+			sourceTree = "<group>";
+		};
+		7FB97CDA273BD6AA00BBCF44 /* DiffableDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				7FB97CD8273BA81400BBCF44 /* RecipesDiffableDataSource.swift */,
+			);
+			path = DiffableDataSource;
 			sourceTree = "<group>";
 		};
 		9A68FD6B26A70D6B002F131D /* Coordinator */ = {
@@ -424,6 +434,7 @@
 		9AAE221826A5D350000483E2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7FB97CDA273BD6AA00BBCF44 /* DiffableDataSource */,
 				9AAE221926A5D350000483E2 /* ViewController */,
 				9AAE221B26A5D350000483E2 /* Views */,
 			);
@@ -779,6 +790,7 @@
 				C38C658226B96976008A3975 /* RecipeListCoordinator.swift in Sources */,
 				EF30F4F626C850CF008D6980 /* DynamicActionSheetController.swift in Sources */,
 				9A68FD6D26A70D7A002F131D /* Coordinator.swift in Sources */,
+				7FB97CD9273BA81400BBCF44 /* RecipesDiffableDataSource.swift in Sources */,
 				EF30F4EE26C844B0008D6980 /* ActionsCoordinator.swift in Sources */,
 				9AAE223F26A5D3EE000483E2 /* AppDelegate.swift in Sources */,
 				9AAE225126A642F7000483E2 /* RecipeDetailsViewController.swift in Sources */,
