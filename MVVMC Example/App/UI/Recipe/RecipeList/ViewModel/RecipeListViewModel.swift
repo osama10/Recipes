@@ -19,14 +19,12 @@ enum ViewState {
 /// It's better to keep the naming consistent with the view
 protocol RecipeListViewModelInput {
     func viewDidLoad()
-    func didTapRow(at indexPath: IndexPath)
+    func didSelect(recipeViewModel: RecipeCellViewModel)
 }
 
 protocol RecipeListViewModelOutput {
-    var numberOfRows: Int { get }
+    var recipesViewModel: [RecipeCellViewModel] { get }
     var viewStateUpdated: ((ViewState) -> Void)? { get set }
-
-    func cellType(at indexPath: IndexPath) -> RecipeListViewModel.CellType
 }
 
 protocol RecipeListViewModelProtocol:  RecipeListViewModelInput, RecipeListViewModelOutput {
@@ -71,22 +69,15 @@ extension RecipeListViewModel {
         }.store(in: &cancelSubscription)
     }
     
-    func didTapRow(at indexPath: IndexPath) {
-        guard case .recipe = cellType(at: indexPath) else { return }
-        actions?.didTapRecipe(recipe: recipes[indexPath.row - 1])
+    func didSelect(recipeViewModel: RecipeCellViewModel) {
+        actions?.didTapRecipe(recipe: recipeViewModel.recipe)
     }
 }
 
 // MARK: - Output protocol
 extension RecipeListViewModel {
-    var numberOfRows: Int {
-        recipes.count + 1
-    }
-
-    func cellType(at indexPath: IndexPath) -> CellType {
-        indexPath.row == 0
-            ? .date(DateCellViewModel())
-            : .recipe(RecipeCellViewModel(recipe: recipes[indexPath.row - 1]))
+    var recipesViewModel: [RecipeCellViewModel] {
+        recipes.map({RecipeCellViewModel(recipe: $0)})
     }
 }
 

@@ -11,9 +11,11 @@ import Combine
 class RecipeListViewController: UITableViewController, AlertsPresentable {
 
     private let viewModel: RecipeListViewModel
+    private var dataSource: RecipesDataSourceProtocol
 
     init(viewModel: RecipeListViewModel) {
         self.viewModel = viewModel
+        dataSource = RecipesDiffableDataSource()
 
         super.init(style: .plain)
     }
@@ -26,13 +28,17 @@ class RecipeListViewController: UITableViewController, AlertsPresentable {
         super.viewDidLoad()
         setupTableView()
         bindViewModel()
+        configureDataSource()
         viewModel.viewDidLoad()
+
     }
-    
+
+    func configureDataSource() {
+        dataSource.registerCells(in: tableView)
+        dataSource.setup(tableView: tableView)
+    }
     /// setup table view
     private func setupTableView() {
-        tableView.register(RecipeTableViewCell.self)
-        tableView.register(DateTableViewCell.self)
         tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableView.automaticDimension
     }
@@ -47,7 +53,7 @@ class RecipeListViewController: UITableViewController, AlertsPresentable {
                 //show loading
                 break
             case .loaded:
-                self.tableView.reloadData()
+                self.dataSource.update(for: self.viewModel.recipesViewModel)
             case .failed(let message):
                 self.showAlert(with: "Error", and: message)
             }
@@ -57,30 +63,10 @@ class RecipeListViewController: UITableViewController, AlertsPresentable {
 
 extension RecipeListViewController {
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.numberOfRows
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         tableViewCell(indexPath: indexPath)
-    }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.didTapRow(at: indexPath)
+        guard let recipeViewModel = dataSource.item(at: indexPath) else { return }
+        viewModel.didSelect(recipeViewModel: recipeViewModel)
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    /// return appropriate UITableViewCelll based on indexPath
-    ///
-    /// - Parameter indexPath: for checking the row
-    /// - Returns UITableViewCell
-    private func tableViewCell(indexPath: IndexPath) -> UITableViewCell {
-        let cellType = viewModel.cellType(at: indexPath)
-
-        switch cellType {
-        case .date(let dateViewModel): return dateCell(viewModel: dateViewModel, indexPath: indexPath)
-        case .recipe(let recipeViewModel): return recipeCell(viewModel: recipeViewModel, indexPath: indexPath)
-        }
     }
     
     /// return  RecipeTableViewCell
@@ -107,4 +93,8 @@ extension RecipeListViewController {
     
 }
 
-
+extension RecipeListViewController {
+    enum Section {
+        case recipe
+    }
+}

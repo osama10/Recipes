@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Recipe {
+struct Recipe: Hashable {
     let title: String
     let image: String
     let headline: String
