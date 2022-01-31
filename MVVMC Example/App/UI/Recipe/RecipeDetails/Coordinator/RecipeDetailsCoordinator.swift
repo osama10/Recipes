@@ -15,10 +15,10 @@ protocol RecipeDetailsViewActions: AnyObject {
 final class RecipeDetailsCoordinator: BaseCoordinator {
     struct Dependency {
         private let builder: RecipeDetailsViewBuilder
-        let sourceController: UINavigationController
+        let sourceController: ViewNavigationProvider
         
         init(builder: RecipeDetailsViewBuilder,
-             sourceController: UINavigationController) {
+             sourceController: ViewNavigationProvider) {
             self.builder = builder
             self.sourceController = sourceController
         }
@@ -47,7 +47,7 @@ final class RecipeDetailsCoordinator: BaseCoordinator {
 
 extension RecipeDetailsCoordinator: RecipeDetailsViewActions {
     func didTapBackButton() {
-        dependency
+        _ = dependency
             .sourceController
             .popViewController(animated: true)
         

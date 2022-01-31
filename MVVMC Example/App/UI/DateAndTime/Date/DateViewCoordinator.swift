@@ -15,7 +15,7 @@ final class DateViewCoordinator: BaseCoordinator {
     
     private let flow: Flow
 
-    let sourceController: UIViewController
+    let sourceController: ViewPresentationProvider
     
     init(flow: Flow, sourceController: UIViewController) {
         self.flow = flow

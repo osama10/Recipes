@@ -24,8 +24,7 @@ protocol RecipeListViewModelInput {
 
 protocol RecipeListViewModelOutput {
     var numberOfRows: Int { get }
-    var viewStateUpdated: ((ViewState) -> Void)? { get set }
-
+    var viewState: Published<ViewState>.Publisher { get }
     func cellType(at indexPath: IndexPath) -> RecipeListViewModel.CellType
 }
 
@@ -34,6 +33,9 @@ protocol RecipeListViewModelProtocol:  RecipeListViewModelInput, RecipeListViewM
 }
 
 final class RecipeListViewModel: RecipeListViewModelProtocol {
+    var viewState: Published<ViewState>.Publisher {
+        $viewStatePublisher
+    }
 
     enum CellType {
         case date(DateCellViewModel)
@@ -45,7 +47,7 @@ final class RecipeListViewModel: RecipeListViewModelProtocol {
     private var cancelSubscription = Set<AnyCancellable>()
     private weak var actions: RecipeListActions?
 
-    var viewStateUpdated: ((ViewState) -> Void)?
+    @Published private var viewStatePublisher = ViewState.initial
 
     init(recipeUseCase: RecipeUseCaseProtocol, actions: RecipeListActions) {
         self.recipeUseCase = recipeUseCase
@@ -57,14 +59,14 @@ final class RecipeListViewModel: RecipeListViewModelProtocol {
 extension RecipeListViewModel {
     func viewDidLoad() {
 
-        viewStateUpdated?(.loading)
+        viewStatePublisher = .loading
         recipeUseCase.getRecipes().receive(on: RunLoop.main).sink { result in
 
             switch result {
             case .failure(let error):
-                self.viewStateUpdated?(.failed(error.localizedDescription))
+                self.viewStatePublisher = .failed(error.localizedDescription)
             case .finished:
-                self.viewStateUpdated?(.loaded)
+                self.viewStatePublisher = .loaded
             }
         } receiveValue: { recipes in
             self.recipes = recipes

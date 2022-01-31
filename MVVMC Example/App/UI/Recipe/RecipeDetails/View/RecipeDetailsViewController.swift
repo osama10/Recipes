@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 final class RecipeDetailsViewController: UIViewController {
     private lazy var imageView: UIImageView = {
@@ -42,6 +43,7 @@ final class RecipeDetailsViewController: UIViewController {
     }()
 
     private let viewModel: RecipeDetailsViewModel
+    private var disposables: Set<AnyCancellable> = []
 
     init(viewModel: RecipeDetailsViewModel) {
         self.viewModel = viewModel
@@ -58,6 +60,7 @@ final class RecipeDetailsViewController: UIViewController {
         setupUI()
         bindViewModel()
         setActions()
+        viewModel.viewDidLoad()
     }
 
     private func setupUI() {
@@ -85,9 +88,17 @@ final class RecipeDetailsViewController: UIViewController {
     }
 
     private func bindViewModel() {
-        recipeTitle.text = viewModel.title
-        recipeHeadline.text = viewModel.headline
-        imageView.kf.setImage(with: viewModel.image)
+        viewModel.title.sink { [weak self] title in
+            self?.recipeTitle.text = title
+        }.store(in: &disposables)
+
+        viewModel.headline.sink { [weak self] recipeHeadline in
+            self?.recipeHeadline.text = recipeHeadline
+        }.store(in: &disposables)
+
+        viewModel.image.sink { [weak self] image in
+            self?.imageView.kf.setImage(with: image)
+        }.store(in: &disposables)
     }
 
     private func setActions() {

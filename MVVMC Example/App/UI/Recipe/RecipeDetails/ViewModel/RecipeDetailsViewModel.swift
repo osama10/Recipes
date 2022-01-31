@@ -6,14 +6,16 @@
 //
 
 import Foundation
+import Combine
 
 protocol RecipeDetailsViewModelOutput {
-    var title: String { get }
-    var image: URL? { get }
-    var headline: String { get }
+    var title: PassthroughSubject<String, Never> { get }
+    var image: PassthroughSubject<URL?, Never> { get }
+    var headline: PassthroughSubject<String, Never> { get }
 }
 
 protocol RecipeDetailsViewModelInput {
+    func viewDidLoad()
     func didTapBackButton()
     func didTapActionsButton()
 }
@@ -23,9 +25,9 @@ protocol RecipeDetailsViewModelProtocol: RecipeDetailsViewModelInput, RecipeDeta
 }
 
 final class RecipeDetailsViewModel: RecipeDetailsViewModelProtocol {
-    var title: String { recipe.title }
-    var image: URL? { URL(string: recipe.image) }
-    var headline: String { recipe.headline }
+    var title: PassthroughSubject<String, Never> = PassthroughSubject()
+    var image: PassthroughSubject<URL?, Never> = PassthroughSubject()
+    var headline: PassthroughSubject<String, Never> = PassthroughSubject()
     
     private let recipe: Recipe
     private weak var actions: RecipeDetailsViewActions?
@@ -41,6 +43,11 @@ final class RecipeDetailsViewModel: RecipeDetailsViewModelProtocol {
 
     func didTapActionsButton() {
         actions?.didTapActionsButton(recipe: recipe)
-        
+    }
+
+    func viewDidLoad() {
+        title.send(recipe.title)
+        headline.send(recipe.headline)
+        image.send(URL(string: recipe.image))
     }
 }
